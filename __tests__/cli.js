@@ -9,7 +9,7 @@ const phenomic = "node ./node_modules/.bin/phenomic"
 const timing = process.env.CI ? 10000 : 5000
 
 beforeEach(() => {
-  process.env.BABEL_ENV = "development"
+  process.env.NODE_ENV = "development"
 })
 
 it("should throw if a CLI flag is NOT recognized", () => {
