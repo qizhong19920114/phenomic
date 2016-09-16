@@ -25,6 +25,8 @@ it("should throw if a CLI flag is NOT recognized", () => {
       }
     )
 
+    child.on("exit", (log) => console.log("exit", log))
+
     const timeout = setTimeout(() => {
       child.kill()
       reject("Test didn't finish before timeout")
@@ -45,6 +47,8 @@ it("should NOT throw if a CLI flag is recognized", () => {
         }
       }
     )
+
+    child.on("exit", (log) => console.log("exit", log))
 
     // ...or be ok quickly
     // we assume it's ok and kill the process
@@ -79,6 +83,8 @@ it("should NOT throw if port is used", () => {
           }
         }
       )
+
+      child.on("exit", (log) => console.log("exit", log))
 
       const timeout = setTimeout(() => {
         try {
