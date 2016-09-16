@@ -226,6 +226,9 @@
       "/stub/",
       "/output/"
     ],
+    "testPathDirs": [
+      "src"
+    ],
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/jest-framework-setup.js",
     "testEnvironment": "node"
   }

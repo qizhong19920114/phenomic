@@ -15,48 +15,46 @@ const baseConfig = {
 
 const noop = () => {}
 
-describe("static > postbuild", () => {
-  beforeEach(() => {
-    mockFs({
-      [__dirname + "/output"]: {},
-    })
+beforeEach(() => {
+  mockFs({
+    [__dirname + "/output"]: {},
   })
+})
 
-  afterEach(() => {
-    mockFs.restore()
-  })
+afterEach(() => {
+  mockFs.restore()
+})
 
-  it("post build nojekyll", async () => {
-    const config = {
-      ...baseConfig,
-      nojekyll: true,
-    }
+it("post build nojekyll", async () => {
+  const config = {
+    ...baseConfig,
+    nojekyll: true,
+  }
 
-    try {
-      await postBuild(config, [], noop)
-      const file = await readFile(join(
-        config.cwd,
-        config.destination,
-        ".nojekyll"
-      ), readOpts)
-      expect(file).toBe("")
-    }
-    catch (err) {
-      console.log(err)
-    }
-  })
-  it("post build CNAME", async () => {
-    const config = {
-      ...baseConfig,
-      CNAME: true,
-    }
-
+  try {
     await postBuild(config, [], noop)
     const file = await readFile(join(
       config.cwd,
       config.destination,
-      "CNAME"
+      ".nojekyll"
     ), readOpts)
-    expect(file).toBe(config.baseUrl.hostname)
-  })
+    expect(file).toBe("")
+  }
+  catch (err) {
+    console.log(err)
+  }
+})
+it("post build CNAME", async () => {
+  const config = {
+    ...baseConfig,
+    CNAME: true,
+  }
+
+  await postBuild(config, [], noop)
+  const file = await readFile(join(
+    config.cwd,
+    config.destination,
+    "CNAME"
+  ), readOpts)
+  expect(file).toBe(config.baseUrl.hostname)
 })

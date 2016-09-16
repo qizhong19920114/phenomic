@@ -17,25 +17,23 @@ test("should provide default offlineConfig when 'offline' = true", (t) => {
   )
 })
 
-describe("configurator > offline", () => {
-  it("should warn if serviceWorker is true with http", () => {
-    const warn = global.console.warn
-    const spy = jest.fn()
-    global.console.warn = spy
+it("should warn if serviceWorker is true with http", () => {
+  const warn = global.console.warn
+  const spy = jest.fn()
+  global.console.warn = spy
 
-    config({
-      pkg: {
-        homepage: "http://te.st/",
-        phenomic: {
-          offline: true,
-        },
+  config({
+    pkg: {
+      homepage: "http://te.st/",
+      phenomic: {
+        offline: true,
       },
-    })
-
-    const logMessage = spy.mock.calls[0][0]
-    expect(logMessage).toMatch(/ServiceWorker will be ignored/)
-    global.console.warn = warn
+    },
   })
+
+  const logMessage = spy.mock.calls[0][0]
+  expect(logMessage).toMatch(/ServiceWorker will be ignored/)
+  global.console.warn = warn
 })
 
 test("should not accept invalid types for 'appcache' and 'serviceWorker'",
