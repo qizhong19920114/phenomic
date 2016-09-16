@@ -24,8 +24,9 @@ it("should throw if a CLI flag is NOT recognized", () => {
         }
       }
     )
-
+    child.kill()
     child.on("exit", (log) => console.log("exit", log))
+    child.on("close", (log) => console.log("close", log))
 
     const timeout = setTimeout(() => {
       child.kill()
@@ -47,8 +48,10 @@ it("should NOT throw if a CLI flag is recognized", () => {
         }
       }
     )
+    child.kill()
 
     child.on("exit", (log) => console.log("exit", log))
+    child.on("close", (log) => console.log("close", log))
 
     // ...or be ok quickly
     // we assume it's ok and kill the process
@@ -65,7 +68,7 @@ it("should NOT throw if a CLI flag is recognized", () => {
   })
 })
 
-it("should NOT throw if port is used", () => {
+fit("should NOT throw if port is used", () => {
   return new Promise((resolve, reject) => {
     const app = require("express")()
     const server = app.listen(3333, (err) => {
@@ -83,22 +86,14 @@ it("should NOT throw if port is used", () => {
           }
         }
       )
+      child.kill()
 
       child.on("exit", (log) => console.log("exit", log))
+      child.on("close", (log) => console.log("close", log))
 
       const timeout = setTimeout(() => {
-        try {
-          child.kill()
-        }
-        catch (err) {
-          console.error(err)
-        }
-        try {
-          server.close()
-        }
-        catch (err) {
-          console.error(err)
-        }
+        child.kill()
+        server.close()
         resolve()
       }, timing * 2)
     })
