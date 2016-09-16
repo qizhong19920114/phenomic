@@ -174,7 +174,7 @@
     "lint:js:flow": "flow check",
     "lint:js": "npm-run-all --parallel lint:js:*",
     "lint": "npm-run-all --parallel lint:*",
-    "integration-tests": "jest --config '{\"testRegex\": \"integration-tests\", \"setupTestFrameworkScriptFile\": \"<rootDir>/scripts/jest-framework-setup.js\"}'",
+    "integration-tests": "jest --config __tests__/jest-config.json",
     "pretest-phenomic-theme-base": "npm run transpile",
     "test-phenomic-theme-base": "babel-node scripts/test-phenomic-theme-base.js",
     "posttest-phenomic-theme-base": "npm run integration-tests",
