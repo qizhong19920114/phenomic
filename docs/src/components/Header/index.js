@@ -5,7 +5,7 @@ import Color from "color"
 
 import ContentWrapper from "../ContentWrapper"
 import GradientLine from "../GradientLine"
-
+import DocSearch from "../DocSearch"
 import styles from "./index.css"
 import npmPkg from "../../../../package.json"
 import Svg from "react-svg-inline"
@@ -103,6 +103,9 @@ const Header = () => {
           >
             <strong>{ "Showcase" }</strong>
           </Link>
+          </div>
+          <div className={ styles.internal }>
+            <DocSearch />
           </div>
           <div className={ styles.internal }>
             <a
