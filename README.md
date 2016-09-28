@@ -1,5 +1,8 @@
 # [![Phenomic](https://rawgit.com/MoOx/phenomic/master/logo/phenomic.svg)](https://phenomic.io)
 
+Use this with [redux_auth](https://github.com/qizhong19920114/redux-auth) because they both use redux. 
+
+
 [![Unix Build status](https://img.shields.io/travis/MoOx/phenomic/master.svg?branch=master&label=unix%20build)](https://travis-ci.org/MoOx/phenomic)
 [![Windows Build status](https://img.shields.io/appveyor/ci/MoOx/phenomic/master.svg?label=window%20build)](https://ci.appveyor.com/project/MoOx/phenomic/branch/master)
 [![Code Coverage](https://img.shields.io/coveralls/MoOx/phenomic/master.svg)](https://coveralls.io/github/MoOx/phenomic)
